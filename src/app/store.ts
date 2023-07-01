@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import addressReducer from '../features/address/addressSlice';
+import mapReducer from '../features/map/mapSlice';
 import {
   FLUSH,
   PAUSE,
@@ -19,7 +19,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  address: addressReducer,
+  map: mapReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
