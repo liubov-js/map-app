@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { LatLngExpression } from 'leaflet';
 
 interface Address {
-  marker: any[],
+  marker: LatLngExpression,
   title: string,
   description: string,
 }

@@ -4,10 +4,11 @@ import Selector from '../Selector/Selector';
 import { add } from '../../features/map/mapSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { LatLngExpression } from 'leaflet';
 import './Sidebar.css';
 
 interface SidebarProps {
-  newCoords: number[] | undefined,
+  newCoords: LatLngExpression | undefined,
   handler: () => void,
 }
 
@@ -30,9 +31,9 @@ const Sidebar: React.FC<SidebarProps> = ({ newCoords, handler }) => {
   }, []);
 
   useEffect(() => {
-    if (newCoords) {
+    if (newCoords && 'lat' in newCoords) {
       axios
-        .get(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${newCoords[0]}&lon=${newCoords[1]}`)
+        .get(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${newCoords.lat}&lon=${newCoords.lng}`)
         .then(res => setAddress(res.data.display_name))
         .catch(err => console.log(err));
     }
@@ -50,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({ newCoords, handler }) => {
   };
 
   return (
-    <div className="SidebarContainer">
+    <div className='SidebarContainer'>
       <span className='CloseCross' onClick={handler}>x</span>
       <div className='Header'>Выберите адрес на карте</div>
       <div className='Address'>Адрес: {address}</div>
