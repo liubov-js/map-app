@@ -1,0 +1,14 @@
+.BtnContainer {
+  z-index: 99999;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 5%;
+}
+
+.Btn {
+  width: 250px;
+  height: 50px;
+  cursor: pointer;
+}

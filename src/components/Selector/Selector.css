@@ -1,0 +1,9 @@
+.SelectContainer {
+  padding: 10px 40px;
+}
+
+.Selector {
+  width: 250px;
+  height: 45px;
+  border-radius: 5px
+}

@@ -1,0 +1,25 @@
+.SidebarContainer {
+  position: absolute;
+  width: 350px;
+  background-color: white;
+  height: 100%;
+  z-index: 9999;
+  top: 0;
+}
+
+.Header {
+  padding: 60px 40px 25px 40px;
+  font-size: larger;
+}
+
+.Address {
+  padding: 10px 40px;
+}
+
+.CloseCross {
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
