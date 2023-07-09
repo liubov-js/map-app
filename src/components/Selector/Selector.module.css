@@ -1,8 +1,8 @@
-.SelectContainer {
+.container {
   padding: 10px 40px;
 }
 
-.Selector {
+.selector {
   width: 250px;
   height: 45px;
   border-radius: 5px

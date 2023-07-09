@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../app/store';
 import { setCenter } from '../../features/map/mapSlice';
-import './Map.css';
+import styles from './Map.module.css';
 
 interface MapProps {
   setNewCoords: Function,
@@ -18,7 +18,7 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({setNewCoords, isSidebar}) => {
-  const [className, setClassName] = useState('EmptyMarkers')
+  const [className, setClassName] = useState(styles['empty-markers']);
   const dispatch = useDispatch();
   const addresses = useSelector((state: RootState) => state.map.addresses);
   const center = useSelector((state: RootState) => state.map.center);
@@ -48,15 +48,15 @@ const Map: React.FC<MapProps> = ({setNewCoords, isSidebar}) => {
 
   useEffect(() => {
     if (addresses.length === 0 && !isSidebar) {
-      setClassName('EmptyMarkers')
+      setClassName(styles['empty-markers']);
     } else {
-      setClassName('EnabledMarkers')
+      setClassName(styles['enabled-markers']);
     }
   }, [isSidebar, addresses])
 
   return (
     <div className={className}>
-      <MapContainer center={center} zoom={zoom}>
+      <MapContainer center={center} zoom={zoom} className={styles['leaflet-container']}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -66,14 +66,14 @@ const Map: React.FC<MapProps> = ({setNewCoords, isSidebar}) => {
             return (
               <Marker position={address.marker} key={i}>
                 <Popup>
-                  <h3 className='MarkerTitle'>{address.title}</h3>
-                  <div className='MarkerDescription'>{address.description}</div>
+                  <h3 className={styles['marker-title']}>{address.title}</h3>
+                  <div className={styles['marker-description']}>{address.description}</div>
                 </Popup>
               </Marker>
             )
           })
         }
-        {addresses.length === 0 && !isSidebar && <div className='EmptyText'>Пусто</div>}
+        {addresses.length === 0 && !isSidebar && <div className={styles['empty-text']}>Пусто</div>}
         <CurrentLocation />
         {isSidebar && <NewMarker/>}
       </MapContainer>

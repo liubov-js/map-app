@@ -3,21 +3,17 @@
   height: 100vh;
 }
 
-.leaflet-popup-content {
-  width: 150px;
-}
-
-.EmptyMarkers {
+.empty-markers {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.EnabledMarkers {
+.enabled-markers {
   opacity: 1;
   pointer-events: all;
 }
 
-.EmptyText {
+.empty-text {
   z-index: 999;
   font-size: xxx-large;
   font-weight: 900;
@@ -28,12 +24,12 @@
   bottom: 50%;
 }
 
-.MarkerTitle {
+.marker-title {
   margin: 5px 0;
   font-weight: 500;
 }
 
-.MarkerDescription {
+.marker-description {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;

@@ -5,7 +5,7 @@ import { add } from '../../features/map/mapSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { LatLngExpression } from 'leaflet';
-import './Sidebar.css';
+import styles from './Sidebar.module.css';
 
 interface SidebarProps {
   newCoords: LatLngExpression | undefined,
@@ -51,10 +51,10 @@ const Sidebar: React.FC<SidebarProps> = ({ newCoords, handler }) => {
   };
 
   return (
-    <div className='SidebarContainer'>
-      <span className='CloseCross' onClick={handler}>x</span>
-      <div className='Header'>Выберите адрес на карте</div>
-      <div className='Address'>Адрес: {address}</div>
+    <div className={styles.container}>
+      <span className={styles.cross} onClick={handler}>x</span>
+      <div className={styles.header}>Выберите адрес на карте</div>
+      <div className={styles.address}>Адрес: {address}</div>
       <Selector options={titles} handler={setTitle} />
       <Selector options={descriptions} handler={setDescription} />
       <Button text='Добавить' handler={addAddress} disabled={(!(newCoords && title && description))} />

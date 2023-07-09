@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import './Selector.css';
+import styles from './Selector.module.css';
 
 interface SelectorProps {
   options?: { id: number, name: string }[],
@@ -12,8 +12,8 @@ const Selector: React.FC<SelectorProps> = ({ options, handler }) => {
   };
 
   return (
-    <div className='SelectContainer'>
-      <select className='Selector' onChange={chooseOption}>
+    <div className={styles.container}>
+      <select className={styles.selector} onChange={chooseOption}>
         <option>Выбрать</option>
         {options && options.length > 0 && options.map((option: any) => {
           return (
