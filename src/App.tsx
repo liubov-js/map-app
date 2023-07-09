@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import Map from './components/Map/Map';
 import Sidebar from './components/Sidebar/Sidebar';
 import Button from './components/Button/Button';
+import Preloader from "./components/Preloader/Preloader";
 import './App.css';
+
+const Map = React.lazy(() => import('./components/Map/Map'));
 
 const App = () => {
   const [isSidebar, setIsSidebar] = useState(false);
@@ -13,7 +15,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <React.Suspense fallback={<Preloader />}>
       <Map setNewCoords={setNewCoords} isSidebar={isSidebar} />
       {
         isSidebar ? (
@@ -22,7 +24,7 @@ const App = () => {
           <Button text='Добавить адрес' handler={toggleSidebar} />
         )
       }
-    </>
+    </React.Suspense>
   );
 }
 
