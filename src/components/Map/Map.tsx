@@ -62,9 +62,9 @@ const Map: React.FC<MapProps> = ({setNewCoords, isSidebar}) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {!isSidebar &&
-          addresses.map(address => {
+          addresses.map((address, i) => {
             return (
-              <Marker position={address.marker}>
+              <Marker position={address.marker} key={i}>
                 <Popup>
                   <h3 className='MarkerTitle'>{address.title}</h3>
                   <div className='MarkerDescription'>{address.description}</div>
